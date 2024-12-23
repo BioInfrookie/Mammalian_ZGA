@@ -6,6 +6,20 @@ library(ggvenn)
 rm(list = ls())
 options(stringsAsFactors = F)
 
+# 
+MM_table_yy <- read.table("/home/qzh/Analysis/qd/MM_B6/FPKM_dir/YY_MM_B6_FPKM.txt",sep = "\t",header = T)
+MM_table_yy_exp <- MM_table_yy[MM_table_yy$MM_GV > 5 |
+                                 MM_table_yy$MM_MII > 5 |
+                                 MM_table_yy$MM_PN5 > 5 |
+                                 MM_table_yy$MM_E2C > 5 |
+                                 MM_table_yy$MM_L2C > 5 |
+                                 MM_table_yy$MM_4C > 5 |
+                                 MM_table_yy$MM_8C > 5 ,]
+
+MM_table_yy_exp$Stage <- "Expression"
+# write.table(MM_table_yy_exp[,c(1,2,10)],file = "/home/qzh/Analysis/qd/MM_B6/MM_Expression_gene.list",
+#             sep = "\t",col.names = T,row.names = F,quote = F)
+# ZGA gene
 MM_table_yy <- read.table("/home/qzh/Analysis/qd/MM_B6/FPKM_dir/YY_MM_B6_FPKM.txt",sep = "\t",header = T)
 MM_table_yy <- MM_table_yy[which(MM_table_yy$MM_GV < 1 ),]
 MM_table_yy <- MM_table_yy[which(MM_table_yy$MM_MII < 1 ),]

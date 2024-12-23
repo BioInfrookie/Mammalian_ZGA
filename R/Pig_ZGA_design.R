@@ -6,6 +6,19 @@ library(ggvenn)
 rm(list = ls())
 options(stringsAsFactors = F)
 
+# Expression
+PP_table_yy <- read.table("/home/qzh/Analysis/qd/PP/ICSI_v2/FPKM_dir/YY_PP_FPKM.txt",sep = "\t",header = T)
+PP_table_yy_exp <- PP_table_yy[PP_table_yy$PP_GV > 5 |
+                                 PP_table_yy$PP_MII > 5 |
+                                 PP_table_yy$PP_PN5 > 5 |
+                                 PP_table_yy$PP_2C > 5 |
+                                 PP_table_yy$PP_4C > 5 |
+                                 PP_table_yy$PP_8C > 5 ,]
+
+PP_table_yy_exp$Stage <- "Expression"
+# write.table(PP_table_yy_exp[,c(1,2,9)],file = "/home/qzh/Analysis/qd/PP/PP_Expression_gene.list",
+#             sep = "\t",col.names = T,row.names = F,quote = F)
+
 ############ YY 
 PP_table_yy <- read.table("/home/qzh/Analysis/qd/PP/ICSI_v2/FPKM_dir/YY_PP_FPKM.txt",sep = "\t",header = T)
 PP_table_yy <- PP_table_yy[,-2]

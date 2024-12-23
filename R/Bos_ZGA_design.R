@@ -6,6 +6,20 @@ library(ggvenn)
 rm(list = ls())
 options(stringsAsFactors = F)
 
+# Expression
+BB_table_yy <- read.table("/home/qzh/Analysis/qd/BB_v1/FPKM_dir/YY_BB_FPKM.txt",
+                          sep = "\t",header = T)
+BB_table_yy_exp <- BB_table_yy[BB_table_yy$BB_GV > 5 |
+                                 BB_table_yy$BB_MII > 5 |
+                                 BB_table_yy$BB_4C > 5 |
+                                 BB_table_yy$BB_8C > 5 |
+                                 BB_table_yy$BB_16C > 5 |
+                                 BB_table_yy$BB_Blast > 5 ,]
+
+BB_table_yy_exp$Stage <- "Expression"
+# write.table(BB_table_yy_exp[,c(1,2,9)],file = "/home/qzh/Analysis/qd/BB_v1/BB_Expression_gene.list",
+#             sep = "\t",col.names = T,row.names = F,quote = F)
+
 ############ YY 
 BB_table_yy <- read.table("/home/qzh/Analysis/qd/BB_v1/FPKM_dir/YY_BB_FPKM.txt",
                           sep = "\t",header = T)
